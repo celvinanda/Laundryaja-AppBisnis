@@ -1,5 +1,6 @@
 package com.takisjoe.laundryajabisnis.domain.customer.entity;
 
+
 public class Customer {
 
     private String idCustomer;

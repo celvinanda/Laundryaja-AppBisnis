@@ -1,4 +1,4 @@
-package com.takisjoe.laundryajabisnis.domain.customer.view.ui.main;
+package com.takisjoe.laundryajabisnis.domain.laundry.view.ui.main;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,19 +14,18 @@ import android.view.ViewGroup;
 
 import com.takisjoe.laundryajabisnis.R;
 
+public class LaundryFragment extends Fragment {
 
-public class CustomerFragment extends Fragment {
+    private LaundryViewModel mViewModel;
 
-    private CustomerViewModel mViewModel;
-
-    public static CustomerFragment newInstance() {
-        return new CustomerFragment();
+    public static LaundryFragment newInstance() {
+        return new LaundryFragment();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CustomerViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(LaundryViewModel.class);
         // TODO: Use the ViewModel
     }
 
@@ -34,7 +33,7 @@ public class CustomerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_customer, container, false);
+        return inflater.inflate(R.layout.fragment_laundry, container, false);
     }
 
 }

@@ -10,6 +10,16 @@ public interface CustomerRepository {
      */
     Customer getAll();
 
+    /**
+     *
+     * @param customer harus berisikan data yang sudah dibuat
+     */
+    void setAll(Customer customer);
+
+    /**
+     *
+     * @param idCustomer pembuatan id 
+     */
     void setId(String idCustomer);
 
     void setUID(String uid);
@@ -32,9 +42,13 @@ public interface CustomerRepository {
 
     void setScore(int score);
 
-    void setUrlProfile();
+    void setUrlProfile(String urlProfile);
+
+    void setLastSeen(Long lastSeen);
 
     void setLastSeen();
+
+    void setTimestampCreatingAccount(Long timestampCreatingAccount);
 
     void setTimestampCreatingAccount();
 }
