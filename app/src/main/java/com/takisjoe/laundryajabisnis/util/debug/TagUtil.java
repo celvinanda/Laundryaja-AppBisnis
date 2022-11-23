@@ -1,6 +1,6 @@
 package com.takisjoe.laundryajabisnis.util.debug;
 
-public class Tag {
+public class TagUtil {
     public static int d(String tag, String msg) {
         System.out.println("DEBUG: " + tag + ": " + msg);
         return 0;

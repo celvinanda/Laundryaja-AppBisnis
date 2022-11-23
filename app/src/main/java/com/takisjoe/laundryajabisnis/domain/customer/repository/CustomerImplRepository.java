@@ -3,6 +3,8 @@ package com.takisjoe.laundryajabisnis.domain.customer.repository;
 import androidx.annotation.NonNull;
 
 import com.takisjoe.laundryajabisnis.domain.customer.entity.Customer;
+import com.takisjoe.laundryajabisnis.util.debug.TagRepository;
+import com.takisjoe.laundryajabisnis.util.timestamp.TimestampUtil;
 
 public class CustomerImplRepository implements CustomerRepository {
     private final Customer customer;
@@ -36,12 +38,12 @@ public class CustomerImplRepository implements CustomerRepository {
 
     @Override
     public void setId(String idCustomer) {
-        if (idCustomer != null && !idCustomer.equals("")) {
-            System.out.println(idCustomer);
-        }else {
-            System.out.println("Tidak ada isinya");
-        }
         String result = "";
+        if (idCustomer != null && !idCustomer.equals("")) {
+            result = idCustomer;
+        } else {
+            result = "Buat setting id disini {tahun(2),bulan(2),tanggal(2),Token(4),idLaundry()}";
+        }
         //Generate id custom
         customer.setIdCustomer(result);
     }
@@ -84,7 +86,8 @@ public class CustomerImplRepository implements CustomerRepository {
 
     @Override
     public void setWhatsappRegistered(boolean registered) {
-        Boolean result = false;
+        boolean result = false;
+        if (registered) result = true;
         customer.setWhatsappRegisteredCustomer(result);
     }
 
@@ -114,25 +117,42 @@ public class CustomerImplRepository implements CustomerRepository {
 
     @Override
     public void setLastSeen(Long lastSeen) {
-        Long result = 0L;
+        Long result;
+        if (lastSeen > 0) {
+            result = lastSeen;
+        } else {
+            result = TimestampUtil.getNewTimestamp();
+        }
         customer.setLastSeenCustomer(result);
     }
 
     @Override
     public void setLastSeen() {
-        Long result = 0L;
+        Long result;
+        result = TimestampUtil.getNewTimestamp();
         customer.setLastSeenCustomer(result);
+        TagRepository.succes("Membuat timestamp untuk LastSeen - " + result);
     }
 
     @Override
     public void setTimestampCreatingAccount(Long timestampCreatingAccount) {
-        Long result = 0L;
+        Long result;
+        if (timestampCreatingAccount > 0L) {
+            result = timestampCreatingAccount;
+            TagRepository.succes("Membuat timestamp untuk akun baru berdasarkan input");
+        } else {
+            result = TimestampUtil.getNewTimestamp();
+            TagRepository.succes("{default} Membuat timestamp untuk akun baru - " + result);
+
+        }
         customer.setCreatedCustomer(result);
     }
 
     @Override
     public void setTimestampCreatingAccount() {
-        Long result = 0L;
+        Long result;
+        result = TimestampUtil.getNewTimestamp();
         customer.setCreatedCustomer(result);
+        TagRepository.succes("Membuat timestamp untuk akun baru - " + result);
     }
 }

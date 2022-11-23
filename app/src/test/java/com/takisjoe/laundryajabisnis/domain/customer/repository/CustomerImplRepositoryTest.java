@@ -1,6 +1,5 @@
 package com.takisjoe.laundryajabisnis.domain.customer.repository;
 
-import com.takisjoe.laundryajabisnis.util.debug.Tag;
 import com.takisjoe.laundryajabisnis.util.debug.TagRepository;
 
 import junit.framework.TestCase;
@@ -12,7 +11,7 @@ public class CustomerImplRepositoryTest extends TestCase {
         CustomerRepository repository = new CustomerImplRepository();
         repository.setId("");
 
-//        TagRepository.testing(repository.getAll().getIdCustomer());
+        TagRepository.testing(repository.getAll().getIdCustomer());
 
     }
 

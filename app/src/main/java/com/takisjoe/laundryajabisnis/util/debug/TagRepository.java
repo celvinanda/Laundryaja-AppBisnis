@@ -1,6 +1,6 @@
 package com.takisjoe.laundryajabisnis.util.debug;
 
-public class TagRepository extends Tag {
+public class TagRepository extends TagUtil {
 
     private static final String tag = "Repository";
 
