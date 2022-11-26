@@ -1,13 +1,20 @@
 package com.takisjoe.laundryajabisnis.domain.customer.repository;
 
-import androidx.annotation.NonNull;
+import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+
+import com.takisjoe.laundryajabisnis.data.room.app.CustomerRoomApp;
 import com.takisjoe.laundryajabisnis.domain.customer.entity.Customer;
 import com.takisjoe.laundryajabisnis.util.debug.TagRepository;
 import com.takisjoe.laundryajabisnis.util.timestamp.TimestampUtil;
 
+import java.util.List;
+
 public class CustomerImplRepository implements CustomerRepository {
     private final Customer customer;
+    private CustomerRoomApp customerRoomApp;
 
     public CustomerImplRepository() {
         customer = new Customer();
@@ -42,7 +49,8 @@ public class CustomerImplRepository implements CustomerRepository {
         if (idCustomer != null && !idCustomer.equals("")) {
             result = idCustomer;
         } else {
-            result = "Buat setting id disini {tahun(2),bulan(2),tanggal(2),Token(4),idLaundry()}";
+//            result = "Buat setting id disini {tahun(2),bulan(2),tanggal(2),Token(4),idLaundry()}";
+            result = "ID"+TimestampUtil.getNewTimestamp();
         }
         //Generate id custom
         customer.setIdCustomer(result);
@@ -51,67 +59,75 @@ public class CustomerImplRepository implements CustomerRepository {
     @Override
     public void setUID(String uid) {
         String result = "";
+        result = uid;
         customer.setUidCustomer(result);
     }
 
     @Override
     public void setNama(String nama) {
         String result = "";
+        result = nama;
         customer.setNameCustomer(result);
     }
 
     @Override
     public void setEmail(String email) {
         String result = "";
+        result = email;
         customer.setEmailCustomer(result);
     }
 
     @Override
     public void setAddress(String address) {
         String result = "";
+        result = address;
         customer.setAddressCustomer(result);
     }
 
     @Override
     public void setGender(int gender) {
         int result = 0;
+        result = gender;
         customer.setGenderCustomer(result);
     }
 
     @Override
     public void setWhatsapp(String whatsapp) {
         String result = "";
+        result = whatsapp;
         customer.setWhatsappCustomer(result);
     }
 
     @Override
     public void setWhatsappRegistered(boolean registered) {
-        boolean result = false;
-        if (registered) result = true;
+        boolean result = registered;
         customer.setWhatsappRegisteredCustomer(result);
     }
 
     @Override
     public void setPhone(String phone) {
         String result = "";
+        result = phone;
         customer.setPhoneCustomer(result);
     }
 
     @Override
     public void setPhoneRegistered(boolean registered) {
-        boolean result = false;
+        boolean result = registered;
         customer.setPhoneRegisteredCustomer(result);
     }
 
     @Override
     public void setScore(int score) {
         int result = 0;
+        result = score;
         customer.setScoreCustomer(result);
     }
 
     @Override
     public void setUrlProfile(String urlProfile) {
         String result = "";
+        result = urlProfile;
         customer.setUrlProfile(result);
     }
 
@@ -155,4 +171,35 @@ public class CustomerImplRepository implements CustomerRepository {
         customer.setCreatedCustomer(result);
         TagRepository.succes("Membuat timestamp untuk akun baru - " + result);
     }
+
+    @Override
+    public void insertRoom(Application application, Customer customer) {
+        new CustomerRoomApp(application).insert(customer);
+    }
+
+    @Override
+    public void updateRoom(Application application, Customer customer) {
+        new CustomerRoomApp(application).update(customer);
+    }
+
+    @Override
+    public void deleteRoom(Application application, Customer customer) {
+        new CustomerRoomApp(application).delete(customer);
+    }
+
+    @Override
+    public void deleteAllRoom(Application application) {
+        new CustomerRoomApp(application).clear();
+    }
+
+    @Override
+    public LiveData<List<Customer>> getAllCustomerRoom(Application application) {
+        return new CustomerRoomApp(application).readAll();
+    }
+
+    @Override
+    public LiveData<List<Customer>> searchRoom(Application application, String whatsapp) {
+        return new CustomerRoomApp(application).searchWhatsapp(whatsapp);
+    }
+
 }

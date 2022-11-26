@@ -1,6 +1,12 @@
 package com.takisjoe.laundryajabisnis.domain.customer.repository;
 
+import android.app.Application;
+
+import androidx.lifecycle.LiveData;
+
 import com.takisjoe.laundryajabisnis.domain.customer.entity.Customer;
+
+import java.util.List;
 
 public interface CustomerRepository {
 
@@ -51,4 +57,16 @@ public interface CustomerRepository {
     void setTimestampCreatingAccount(Long timestampCreatingAccount);
 
     void setTimestampCreatingAccount();
+
+    void insertRoom(Application application, Customer customer);
+
+    void updateRoom(Application application, Customer customer);
+
+    void deleteRoom(Application application, Customer customer);
+
+    void deleteAllRoom(Application application);
+
+    LiveData<List<Customer>> getAllCustomerRoom(Application application);
+
+    LiveData<List<Customer>> searchRoom(Application application,String whatsapp);
 }

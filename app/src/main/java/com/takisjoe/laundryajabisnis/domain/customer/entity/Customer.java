@@ -1,21 +1,58 @@
 package com.takisjoe.laundryajabisnis.domain.customer.entity;
 
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.takisjoe.laundryajabisnis.util.timestamp.TimestampImplUtil;
+import com.takisjoe.laundryajabisnis.util.timestamp.TimestampUtil;
+
+@Entity(tableName = "customer_table")
 public class Customer {
 
+    @PrimaryKey
+    @NonNull
     private String idCustomer;
+
+    @ColumnInfo(name = "customerUid")
     private String uidCustomer;
+
+    @ColumnInfo(name = "customerName")
     private String nameCustomer;
+
+    @ColumnInfo(name = "customerEmail")
     private String emailCustomer;
+
+    @ColumnInfo(name = "customerAddress")
     private String addressCustomer;
+
+    @ColumnInfo(name = "customerGender")
     private int genderCustomer;
+
+    @ColumnInfo(name = "customerWhatsapp")
     private String whatsappCustomer;
+
+    @ColumnInfo(name = "customerWhatsappRegister")
     private Boolean whatsappRegisteredCustomer;
+
+    @ColumnInfo(name = "customerPhone")
     private String phoneCustomer;
+
+    @ColumnInfo(name = "customerPhoneRegister")
     private Boolean phoneRegisteredCustomer;
+
+    @ColumnInfo(name = "customerUrlProfile")
     private String urlProfile;
+
+    @ColumnInfo(name = "customerScore")
     private int scoreCustomer;
+
+    @ColumnInfo(name = "customerLastSeen")
     private Long lastSeenCustomer;
+
+    @ColumnInfo(name = "customerCreate")
     private Long createdCustomer;
 
     public Customer() {
@@ -36,6 +73,26 @@ public class Customer {
         this.scoreCustomer = scoreCustomer;
         this.lastSeenCustomer = lastSeenCustomer;
         this.createdCustomer = createdCustomer;
+    }
+
+    @NonNull
+    public static Customer fakeCustomer() {
+        Customer customer = new Customer();
+        customer.setIdCustomer("Id-Fake-"+ TimestampUtil.getNewTimestamp());
+        customer.setUidCustomer("Id-Fake-"+ TimestampUtil.getNewTimestamp());
+        customer.setNameCustomer("Celvinanda");
+        customer.setEmailCustomer("Id-Fake-"+ TimestampUtil.getNewTimestamp());
+        customer.setAddressCustomer("Id-Fake-"+ TimestampUtil.getNewTimestamp());
+        customer.setGenderCustomer(1);
+        customer.setWhatsappCustomer("Id-Fake-"+ TimestampUtil.getNewTimestamp());
+        customer.setWhatsappRegisteredCustomer(true);
+        customer.setPhoneCustomer("Id-Fake-"+ TimestampUtil.getNewTimestamp());
+        customer.setPhoneRegisteredCustomer(true);
+        customer.setUrlProfile("Id-Fake-"+ TimestampUtil.getNewTimestamp());
+        customer.setScoreCustomer(5);
+        customer.setLastSeenCustomer(TimestampUtil.getNewTimestamp());
+        customer.setCreatedCustomer(TimestampUtil.getNewTimestamp());
+        return customer;
     }
 
     public String getIdCustomer() {
