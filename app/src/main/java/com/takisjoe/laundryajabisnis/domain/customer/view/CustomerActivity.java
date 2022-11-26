@@ -13,6 +13,8 @@ public class CustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
+        getSupportActionBar().setTitle("Pelanggan");
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, CustomerFragment.newInstance())

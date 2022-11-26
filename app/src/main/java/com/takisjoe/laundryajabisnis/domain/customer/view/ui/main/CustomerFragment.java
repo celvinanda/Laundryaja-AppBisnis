@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.takisjoe.laundryajabisnis.R;
 import com.takisjoe.laundryajabisnis.domain.customer.adapter.CustomerAdapter;
+import com.takisjoe.laundryajabisnis.domain.customer.view.ui.add.AddCustomerFragment;
 
 import org.jetbrains.annotations.Contract;
 
@@ -52,7 +53,11 @@ public class CustomerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(CustomerViewModel.class);
 
-        fabAdd.setOnClickListener(v -> mViewModel.addCustomer());
+        fabAdd.setOnClickListener(v -> getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, AddCustomerFragment.newInstance())
+                .commitNow());
+
+
         mViewModel.getAllCustomer().observe(getViewLifecycleOwner(), customers -> {
             customerAdapter = new CustomerAdapter(getActivity().getApplication(),customers);
 

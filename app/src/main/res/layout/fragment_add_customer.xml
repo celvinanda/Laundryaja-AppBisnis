@@ -20,6 +20,7 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addNameCustomer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nama" />
@@ -30,6 +31,7 @@
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/addWhatsappCustomer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Whatsapp" />

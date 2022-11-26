@@ -42,7 +42,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.ViewHo
     public void onBindViewHolder(@NonNull CustomerAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvNameCustomer.setText(customers.get(position).getNameCustomer());
         holder.tvAddressCustomer.setText(customers.get(position).getAddressCustomer());
-        holder.tvStatusCustomer.setText(customers.get(position).getPhoneCustomer());
+        holder.tvStatusCustomer.setText(customers.get(position).getWhatsappCustomer());
 
         holder.cardCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
