@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
 import com.takisjoe.laundryajabisnis.data.room.app.CustomerRoomApp;
+import com.takisjoe.laundryajabisnis.domain.company.center.entity.CompanyCenter;
 import com.takisjoe.laundryajabisnis.domain.customer.entity.Customer;
+import com.takisjoe.laundryajabisnis.domain.customer.entity.CustomerBuilder;
 import com.takisjoe.laundryajabisnis.util.debug.TagRepository;
 import com.takisjoe.laundryajabisnis.util.timestamp.TimestampUtil;
 
@@ -46,11 +48,13 @@ public class CustomerImplRepository implements CustomerRepository {
     @Override
     public void setId(String idCustomer) {
         String result = "";
-        if (idCustomer != null && !idCustomer.equals("")) {
+        if (idCustomer != null) {
             result = idCustomer;
+            TagRepository.succes("Mendapatkan ID : "+result);
         } else {
 //            result = "Buat setting id disini {tahun(2),bulan(2),tanggal(2),Token(4),idLaundry()}";
-            result = "ID"+TimestampUtil.getNewTimestamp();
+            result = new CompanyCenter().getIdCompanyCenter() +TimestampUtil.getNewTimestamp();
+            TagRepository.succes("Membuat ID baru : "+result);
         }
         //Generate id custom
         customer.setIdCustomer(result);
@@ -120,7 +124,9 @@ public class CustomerImplRepository implements CustomerRepository {
     @Override
     public void setScore(int score) {
         int result = 0;
-        result = score;
+        if (score != -1) {
+            result = score;
+        }
         customer.setScoreCustomer(result);
     }
 
@@ -134,7 +140,7 @@ public class CustomerImplRepository implements CustomerRepository {
     @Override
     public void setLastSeen(Long lastSeen) {
         Long result;
-        if (lastSeen > 0) {
+        if (lastSeen != -1L) {
             result = lastSeen;
         } else {
             result = TimestampUtil.getNewTimestamp();
@@ -153,7 +159,7 @@ public class CustomerImplRepository implements CustomerRepository {
     @Override
     public void setTimestampCreatingAccount(Long timestampCreatingAccount) {
         Long result;
-        if (timestampCreatingAccount > 0L) {
+        if (timestampCreatingAccount != -1L) {
             result = timestampCreatingAccount;
             TagRepository.succes("Membuat timestamp untuk akun baru berdasarkan input");
         } else {

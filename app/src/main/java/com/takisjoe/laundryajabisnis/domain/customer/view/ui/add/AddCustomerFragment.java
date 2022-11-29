@@ -18,6 +18,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.takisjoe.laundryajabisnis.R;
 import com.takisjoe.laundryajabisnis.domain.customer.entity.Customer;
+import com.takisjoe.laundryajabisnis.domain.customer.entity.CustomerBuilder;
 import com.takisjoe.laundryajabisnis.domain.customer.view.ui.main.CustomerFragment;
 import com.takisjoe.laundryajabisnis.util.timestamp.TimestampUtil;
 
@@ -59,29 +60,11 @@ public class AddCustomerFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Customer customer = new Customer();
-                customer.setIdCustomer("Id-"+ TimestampUtil.getNewTimestamp());
-                customer.setUidCustomer(null);
-                customer.setNameCustomer(addNameCustomer.getText().toString());
-                customer.setEmailCustomer(null);
-                customer.setAddressCustomer(null);
-                customer.setWhatsappCustomer(addWhatsappCustomer.getText().toString());
-                customer.setWhatsappRegisteredCustomer(false);
-                customer.setPhoneCustomer("");
-                customer.setPhoneRegisteredCustomer(false);
-                customer.setUrlProfile("");
-                customer.setScoreCustomer(10);
-                customer.setLastSeenCustomer(TimestampUtil.getNewTimestamp());
-                customer.setCreatedCustomer(TimestampUtil.getNewTimestamp());
-
-
-                if (rbPria.isChecked()){
-                    customer.setGenderCustomer(1);
-                } else if (rbWanita.isChecked()) {
-                    customer.setGenderCustomer(2);
-                }else {
-                    customer.setGenderCustomer(0);
-                }
+                Customer customer = new CustomerBuilder()
+                        .setNameCustomer(addNameCustomer.getText().toString())
+                        .setWhatsappCustomer(addWhatsappCustomer.getText().toString())
+                        .setGenderCustomer(gender())
+                        .build();
 
 
                 mViewModel.setCustomer(customer);
@@ -91,6 +74,16 @@ public class AddCustomerFragment extends Fragment {
                         .commitNow();
             }
         });
+    }
+
+    private int gender() {
+        if (rbPria.isChecked()) {
+            return 1;
+        } else if (rbWanita.isChecked()) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
 }

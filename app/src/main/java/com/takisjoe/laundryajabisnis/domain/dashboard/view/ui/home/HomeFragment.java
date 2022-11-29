@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.takisjoe.laundryajabisnis.domain.dashboard.databinding.FragmentHomeBinding;
+import com.takisjoe.laundryajabisnis.databinding.FragmentHomeBinding;
+
 
 public class HomeFragment extends Fragment {
 

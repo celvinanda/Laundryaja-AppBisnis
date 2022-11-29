@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.takisjoe.laundryajabisnis.domain.dashboard.databinding.FragmentNotificationsBinding;
+import com.takisjoe.laundryajabisnis.databinding.FragmentNotificationsBinding;
+
 
 public class NotificationsFragment extends Fragment {
 
