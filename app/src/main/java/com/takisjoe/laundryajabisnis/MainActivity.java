@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.takisjoe.laundryajabisnis.domain.customer.view.CustomerActivity;
+import com.takisjoe.laundryajabisnis.domain.laundry.view.LaundryActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startActivity(new Intent(this, CustomerActivity.class));
+        startActivity(new Intent(this, LaundryActivity.class));
         finish();
     }
 }

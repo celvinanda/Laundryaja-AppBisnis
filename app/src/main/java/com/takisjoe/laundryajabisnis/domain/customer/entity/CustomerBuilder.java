@@ -1,6 +1,7 @@
 package com.takisjoe.laundryajabisnis.domain.customer.entity;
 
 public class CustomerBuilder {
+    //TODO : Default Value
     private String idCustomer = null;
     private String uidCustomer = null;
     private String nameCustomer = null;

@@ -29,7 +29,6 @@ public class RandomUtil {
         Random random = new Random();
         result = String.valueOf(('a' + random.nextInt(26)));
         return result;
-
     }
 
     @NonNull

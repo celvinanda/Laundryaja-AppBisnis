@@ -48,7 +48,6 @@ public class AddCustomerFragment extends Fragment {
         rbWanita = view.findViewById(R.id.rbWanita);
         btnSave = view.findViewById(R.id.btnSave);
 
-
         return view;
     }
 

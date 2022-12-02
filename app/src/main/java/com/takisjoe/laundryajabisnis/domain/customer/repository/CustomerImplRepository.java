@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.takisjoe.laundryajabisnis.data.room.app.CustomerRoomApp;
 import com.takisjoe.laundryajabisnis.domain.company.center.entity.CompanyCenter;
+import com.takisjoe.laundryajabisnis.domain.company.center.entity.CompanyCenterBuilder;
 import com.takisjoe.laundryajabisnis.domain.customer.entity.Customer;
 import com.takisjoe.laundryajabisnis.domain.customer.entity.CustomerBuilder;
 import com.takisjoe.laundryajabisnis.util.debug.TagRepository;
@@ -50,11 +51,11 @@ public class CustomerImplRepository implements CustomerRepository {
         String result = "";
         if (idCustomer != null) {
             result = idCustomer;
-            TagRepository.succes("Mendapatkan ID : "+result);
+            TagRepository.succes("Mendapatkan ID : " + result);
         } else {
 //            result = "Buat setting id disini {tahun(2),bulan(2),tanggal(2),Token(4),idLaundry()}";
-            result = new CompanyCenter().getIdCompanyCenter() +TimestampUtil.getNewTimestamp();
-            TagRepository.succes("Membuat ID baru : "+result);
+            result = new CompanyCenter().getIdCompanyCenter() + TimestampUtil.getNewTimestamp();
+            TagRepository.succes("Membuat ID baru : " + result);
         }
         //Generate id custom
         customer.setIdCustomer(result);
@@ -91,7 +92,11 @@ public class CustomerImplRepository implements CustomerRepository {
     @Override
     public void setGender(int gender) {
         int result = 0;
-        result = gender;
+        if (gender == -1) {
+            result = 0;
+        } else {
+            result = gender;
+        }
         customer.setGenderCustomer(result);
     }
 
